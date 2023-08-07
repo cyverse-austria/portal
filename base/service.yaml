@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-portal
+  labels:
+    app: user-portal
+spec:
+  ports:
+  - protocol: TCP
+    name: http
+    port: 80
+    nodePort: 30392 # keep in mind that it exposes the node port of your worker node
+    targetPort: http
+  selector:
+    app: user-portal
+  type: NodePort
